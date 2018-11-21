@@ -15,6 +15,15 @@
         "url": "https://github.com/grohiro/php-ruleset"
       }
     ],
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+            "LaravelCommons\\": "src/"
+        },
+        "files": [
+        ]
+    },
     "require": {},
     "require-dev": {
         "grohiro/php-ruleset": "dev-master"
