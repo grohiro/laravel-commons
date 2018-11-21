@@ -24,7 +24,9 @@
         "files": [
         ]
     },
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
     "require-dev": {
         "grohiro/php-ruleset": "dev-master"
     },
