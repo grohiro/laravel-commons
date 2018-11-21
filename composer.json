@@ -1,0 +1,27 @@
+{
+    "name": "grohiro/laravel-commons",
+    "description": "A repository of reusable Laravel components.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "grohiro",
+            "email": "khirokawa@growk.jp"
+        }
+    ],
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/grohiro/php-ruleset"
+      }
+    ],
+    "require": {},
+    "require-dev": {
+        "grohiro/php-ruleset": "dev-master"
+    },
+    "scripts": {
+        "cs-check": "phpcs --colors -p --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
+        "cs-fix": "phpcbf --colors --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
+        "phpmd": "phpmd ./src text vendor/grohiro/php-ruleset/ruleset/laravel/phpmd-ruleset.xml"
+    }
+}
