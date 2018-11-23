@@ -15,6 +15,13 @@
 ]      
 ```
 
+```bash
+$ composer require grohiro/laravel-commons
+
+# 指定のバージョンをインストール、またはバージョンアップする
+$ composer require grohiro/laravel-commons v20181123-1
+```
+
 サービスプロバイダを登録する。
 
 ```php
