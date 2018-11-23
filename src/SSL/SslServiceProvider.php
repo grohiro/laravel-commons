@@ -29,9 +29,8 @@ class SslServiceProvider extends ServiceProvider
         if (in_array(config('app.env'), $envs)) {
             \URL::forceScheme('https');
 
-            $router = $this->app['router'];
-            $router->pushMiddlewareToGroup('web', ForceHttpProtocol::class);
-            $router->pushMiddlewareToGroup('api', ForceHttpProtocol::class);
+            $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
+            $kernel->pushMiddleware(ForceHttpProtocol::class);
         }
     }
 }
