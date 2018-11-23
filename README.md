@@ -51,17 +51,6 @@ $ php artisan vendor:publish --provider=LaravelCommons\ServicePovider
 
 ### 使い方
 
-#### request.log
-
-Middleware を追加する。
-
-```php
-# app/Http/Kernel.php
-protected $middleware = [
-    \LaravelCommons\Logging\RequestLogger::class,
-]
-```
-
 #### console.log
 
 Laravel の ログファイル `storage/logs/console.log` と `STDOUT` にログを出力します。
@@ -85,10 +74,15 @@ config/laravel_commons.php
 ## SSL
 
 SSL を強制します。`http://` へのアクセスを `https://` にリダイレクトします。
-対象のルートグループは `web` と `api` です。
 
 ### オプション
 
 |Key|Type|Description|
 |---|----|-----------|
-|ssl.environments|array[string]|SSL を使用する `environment` を指定する|
+|ssl.environments|array[string]|SSL を使用する `app.env` を指定する|
+
+```php
+'ssl' => [
+  'environments' => ['staging', 'production]
+]
+```

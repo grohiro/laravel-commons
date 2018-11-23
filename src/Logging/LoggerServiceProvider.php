@@ -2,12 +2,12 @@
 namespace LaravelCommons\Logging;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\ServiceProvider;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\MessageFormatter;
 
 class LoggerServiceProvider extends ServiceProvider
 {
@@ -37,6 +37,11 @@ class LoggerServiceProvider extends ServiceProvider
             }
             return new Client($opts);
         });
+
+        if (config('laravel_commons.logging.request', false) === true) {
+            $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
+            $kernel->pushMiddleware(RequestLogger::class);
+        }
     }
 
     /**
