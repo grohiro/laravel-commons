@@ -28,7 +28,8 @@
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "grohiro/php-ruleset": "dev-master"
+        "grohiro/php-ruleset": "dev-master",
+        "laravel/framework": "^5.7"
     },
     "scripts": {
         "cs-check": "phpcs --colors -p --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
