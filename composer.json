@@ -19,7 +19,16 @@
         "classmap": [
         ],
         "psr-4": {
-            "LaravelCommons\\": "src/"
+            "LaravelCommons\\": "src/",
+            "LaravelCommons\\Tests\\": "tests/"
+        },
+        "files": [
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+        ],
+        "psr-4": {
         },
         "files": [
         ]
@@ -29,7 +38,8 @@
     },
     "require-dev": {
         "grohiro/php-ruleset": "dev-master",
-        "laravel/framework": "^5.7"
+        "laravel/framework": "^5.7",
+        "phpunit/phpunit": "^7.4"
     },
     "scripts": {
         "cs-check": "phpcs --colors -p --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
