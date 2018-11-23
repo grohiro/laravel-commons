@@ -74,3 +74,14 @@ config/laravel_commons.php
 |logging.request|boolean|request.log を使用する|
 |logging.query|boolean|query.log を使用する|
 |logging.http|boolean|http.log を使用する|
+
+## SSL
+
+SSL を強制します。`http://` へのアクセスを `https://` にリダイレクトします。
+対象のルートグループは `web` と `api` です。
+
+### オプション
+
+|Key|Type|Description|
+|---|----|-----------|
+|ssl.environments|array[string]|SSL を使用する `environment` を指定する|

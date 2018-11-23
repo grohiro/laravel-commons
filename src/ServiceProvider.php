@@ -24,5 +24,6 @@ class ServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $this->app->register(Logging\LoggerServiceProvider::class);
+        $this->app->register(SSL\SslServiceProvider::class);
     }
 }
