@@ -14,8 +14,9 @@ $ composer require grohiro/laravel-commons:dev-master
 設定ファイルを作成する。
 
 ```bash
-$ php artisan vendor:publish --provider=LaravelCommons\ServicePovider
-# config/laravel_commons.php が生成される
+$ php artisan vendor:publish --provider=LaravelCommons\\ServiceProvider
+# edit .env and add:
+#   LARAVEL_COMMONS_LOG=true
 ```
 
 ## Logging
