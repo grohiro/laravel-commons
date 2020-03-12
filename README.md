@@ -4,31 +4,11 @@
 [toc]
 
 ## インストール
-`composer.json` にリポジトリを追加する。
-
-```json
-"repositories": [          
-  {                                                               
-    "type": "vcs",                        
-    "url": "git@github.com:grohiro/laravel-commons.git"
-  }
-]      
-```
 
 ```bash
-$ composer require grohiro/laravel-commons
+$ composer config repositories.grohiro/laravel-commons vcs https://github.com/grohiro/laravel-commons.git
+$ composer require grohiro/laravel-commons:dev-master
 
-# 指定のバージョンをインストール、またはバージョンアップする
-$ composer require grohiro/laravel-commons v20181123-1
-```
-
-サービスプロバイダを登録する。
-
-```php
-// config/app.php
-$providers = [
-    \LaravelCommons\ServiceProvider::class
-];
 ```
 
 設定ファイルを作成する。

@@ -45,5 +45,12 @@
         "cs-check": "phpcs --colors -p --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
         "cs-fix": "phpcbf --colors --standard=vendor/grohiro/php-ruleset/ruleset/laravel/phpcs-ruleset.xml ./src",
         "phpmd": "phpmd ./src text vendor/grohiro/php-ruleset/ruleset/laravel/phpmd-ruleset.xml"
+    },
+    "extra": {
+        "laravel": {
+            "providers": {
+                "LaravelCommons\\ServiceProvider"
+            }
+        }
     }
 }
