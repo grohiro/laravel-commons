@@ -54,29 +54,29 @@ class LoggerServiceProvider extends ServiceProvider
         // Incoming request log
         $this->app->bind('logger.request', function () {
             $logger = new Logger('request');
-            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/request.log', config('log')));
+            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/request.log', config('laravel_commons.log_level', 'debug')));
             return $logger;
         });
 
         // HTTP request and response logger
         $this->app->bind('logger.http', function () {
             $logger = new Logger('http');
-            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/http.log', config('log')));
+            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/http.log', config('laravel_commons.log_level', 'debug')));
             return $logger;
         });
 
         // Query log
         $this->app->bind('logger.query', function () {
             $logger = new Logger('query');
-            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/query.log', config('log')));
+            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/query.log', config('laravel_commons.log_level', 'debug')));
             return $logger;
         });
 
         // Console
         $this->app->bind('logger.console', function () {
             $logger = new Logger('console');
-            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/console.log', config('log')));
-            $logger->pushHandler(new StreamHandler('php://stdout', config('log')));
+            $logger->pushHandler(new StreamHandler(storage_path() . '/logs/console.log', config('laravel_commons.log_level', 'debug')));
+            $logger->pushHandler(new StreamHandler('php://stdout', config('laravel_commons.log_level', 'debug')));
             return $logger;
         });
     }

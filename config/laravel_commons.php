@@ -5,4 +5,5 @@ return [
         'query' => true,
         'http' => true,
     ],
+    'log_level' => 'debug',
 ];
