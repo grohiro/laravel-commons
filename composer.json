@@ -48,9 +48,9 @@
     },
     "extra": {
         "laravel": {
-            "providers": {
+            "providers": [
                 "LaravelCommons\\ServiceProvider"
-            }
+            ]
         }
     }
 }
