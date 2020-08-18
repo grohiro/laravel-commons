@@ -15,9 +15,11 @@ class ForceHttpProtocol
     public function handle($request, Closure $next)
     {
         $forwardedProto = $request->server->get('HTTP_X_FORWARDED_PROTO');
-        if (!blank($forwardedProto) && $forwardedProto != 'https') {
+        if (!blank($forwardedProto)) {
             // via ELB
-            return redirect()->secure($request->getRequestUri());
+            if ($forwardedProto != 'https') {
+                return redirect()->secure($request->getRequestUri());
+            }
         } else {
             // direct
             if (!$request->secure()) {
