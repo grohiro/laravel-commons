@@ -16,6 +16,7 @@ class SecurityHeader
 
         $response->header('X-Frame-Options', 'SAMEORIGIN', false);
         $response->header('X-XSS-Protection', 1, false);
+        $response->header('X-Content-Type-Options', 'nosniff', false);
 
         return $response;
     }
