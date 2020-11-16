@@ -19,34 +19,28 @@ class LoggerServiceProvider extends ServiceProvider
     public function boot()
     {
         if (config('laravel_commons.logging.query.enable', false)) {
-            if (config('laravel_commons.logging.query', false) === true) {
-                $logger = $this->app->make('logger.query');
-                \Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) use ($logger) {
-                    $logger->debug($event->sql, $event->bindings, ['time' => $event->time]);
-                });
-            }
-        }
-
-        if (config('laravel_commons.logging.http.enable', false)) {
-            $this->app->bind(Client::class, function ($app) {
-                $opts = ['verify' => false];
-                if (config('laravel_commons.logging.http', false) === true) {
-                    $handler = HandlerStack::create();
-                    $handler->push(Middleware::log(
-                        $app->make('logger.http'),
-                        new MessageFormatter('[REQUEST]{method} {uri} {req_body} [RESPONSE]{code} {res_body}')
-                    ));
-                    $opts['handler'] = $handler;
-                }
-                return new Client($opts);
+            $logger = $this->app->make('logger.query');
+            \Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) use ($logger) {
+                $logger->debug($event->sql, $event->bindings, ['time' => $event->time]);
             });
         }
 
-        if (config('laravel_commons.logging.request.enable', false)) {
-            if (config('laravel_commons.logging.request', false) === true) {
-                $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
-                $kernel->pushMiddleware(RequestLogger::class);
+        $this->app->bind(Client::class, function ($app) {
+            $opts = ['verify' => false];
+            if (config('laravel_commons.logging.http.enable', false)) {
+                $handler = HandlerStack::create();
+                $handler->push(Middleware::log(
+                    $app->make('logger.http'),
+                    new MessageFormatter('[REQUEST]{method} {uri} {req_body} [RESPONSE]{code} {res_body}')
+                ));
+                $opts['handler'] = $handler;
             }
+            return new Client($opts);
+        });
+
+        if (config('laravel_commons.logging.request.enable', false)) {
+            $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
+            $kernel->pushMiddleware(RequestLogger::class);
         }
     }
 
